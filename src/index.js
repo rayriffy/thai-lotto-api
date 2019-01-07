@@ -154,6 +154,14 @@ function getData(url, res) {
   })
 }
 
+server.get('/', (req, res) => {
+  res.send({
+    status: 'success',
+    response:
+      'Please go to https://github.com/rayriffy/thai-lotto-api#api for API usage',
+  })
+})
+
 server.get('/latest', (req, res) => {
   // Get latest lottery URL
   rp({
