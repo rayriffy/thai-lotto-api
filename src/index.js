@@ -219,6 +219,16 @@ server.get('/lotto/:id', (req, res) => {
   getData('https://news.sanook.com/lotto/check/' + req.params.id, res)
 })
 
+server.get('*', (req, res) => {
+  res.send(
+    {
+      status: 'failure',
+      response: 'route not found',
+    },
+    404,
+  )
+})
+
 server
   .use(bodyParser.json())
   .listen(PORT, () => console.log(`App listening on port ${PORT}!`))
