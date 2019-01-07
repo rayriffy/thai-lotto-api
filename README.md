@@ -290,7 +290,7 @@ API
   }
 }
 ```
-
+</details>
 
 ### List past lottery date
 
@@ -363,6 +363,7 @@ API
   ]
 }
 ```
+</details>
 
 ### Get past lottery result
 
@@ -628,6 +629,7 @@ API
   }
 }
 ```
+</details>
 
 Contributing
 ------------
