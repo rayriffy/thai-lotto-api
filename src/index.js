@@ -169,6 +169,48 @@ server.get('/latest', (req, res) => {
   })
 })
 
+server.get('/list/:page?', (req, res) => {
+  let page = req.params.page || 1
+  rp({
+    uri: `https://news.sanook.com/lotto/archive/page/${page}`,
+    transform: body => {
+      return cheerio.load(body)
+    },
+  }).then($ => {
+    let pastLottos = []
+    // List id
+    $(
+      'body > div.wrapper > div > div.box-cell.box-cell--lotto.content > div > div > div > article.archive--lotto > div > div > a',
+    ).each((i, elem) => {
+      pastLottos.push({})
+      pastLottos[i].id = $(elem)
+        .attr('href')
+        .split('/')[5]
+      pastLottos[i].url = '/lotto/' + pastLottos[i].id
+    })
+    // List name
+    $(
+      'body > div.wrapper > div > div.box-cell.box-cell--lotto.content > div > div > div > article.archive--lotto > div.archive--lotto__body > div > a > div > h3.archive--lotto__head-lot',
+    ).each((i, elem) => {
+      pastLottos[i].date = $(elem)
+        .text()
+        .substr(
+          $(elem)
+            .text()
+            .indexOf('ตรวจหวย') + 8,
+        )
+    })
+    res.send({
+      status: 'success',
+      response: pastLottos,
+    })
+  })
+})
+
+server.get('/lotto/:id', (req, res) => {
+  getData('https://news.sanook.com/lotto/check/' + req.params.id, res)
+})
+
 server
   .use(bodyParser.json())
   .listen(PORT, () => console.log(`App listening on port ${PORT}!`))
