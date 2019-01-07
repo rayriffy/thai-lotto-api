@@ -33,6 +33,8 @@ This API crawl data from sanook.com and the API cannot handle URL in case of 404
 API
 ---
 
+The API is based on HTTPS requests and JSON responses.The stable HTTPS endpoint for the latest version is: `https://thai-lotto-api.herokuapp.com`
+
 ### Get latest lottery result
 
 ##### request
