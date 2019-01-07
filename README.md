@@ -25,6 +25,11 @@ $ yarn
 $ yarn start
 ```
 
+Limitations
+-----------
+
+This API crawl data from sanook.com and the API cannot handle URL in case of 404 yet
+
 API
 ---
 
