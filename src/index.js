@@ -170,9 +170,21 @@ server.get('/latest', (req, res) => {
       return cheerio.load(body)
     },
   }).then($ => {
-    let lottoUrl = $(
-      'body > div.section.section--highlight.highlight-horo > div > div > div > div.lotto-highlight > div > div.lotto-check__btn-group.flex-box > div > a',
-    ).attr('href')
+    let lottoUrl
+
+    if (
+      $('#lotto-highlight-result > p.lotto__wait').text() ===
+      'รอผลสลากกินแบ่งรัฐบาล'
+    ) {
+      lottoUrl = $(
+        'body > div.section.section--lotto-check > div > div > div > div.col.span-8 > section > div.section__body > div > article:nth-child(1) > h3.lotto-check__title > a',
+      ).attr('href')
+    } else {
+      lottoUrl = $(
+        'body > div.section.section--highlight.highlight-horo > div > div > div > div.lotto-highlight > div > div.lotto-check__btn-group.flex-box > div > a',
+      ).attr('href')
+    }
+
     getData(lottoUrl, res)
   })
 })
