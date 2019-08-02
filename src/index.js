@@ -131,8 +131,8 @@ function getData(url, res) {
             id: 'runningNumberFrontThree',
             name: 'รางวัลเลขหน้า 3 ตัว',
             reward: '4000',
-            amount: runningNumberBackThree.length,
-            number: runningNumberBackThree,
+            amount: runningNumberFrontThree.length,
+            number: runningNumberFrontThree,
           },
           {
             id: 'runningNumberBackThree',
