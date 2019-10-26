@@ -14,10 +14,9 @@ server.use(bodyParser.json())
 server.use(cors())
 
 server.get('/', (req, res) => {
-  res.send({
+  res.status(200).send({
     status: 'success',
-    response:
-      'Please go to https://github.com/rayriffy/thai-lotto-api#api for API usage',
+    response: 'Please go to https://github.com/rayriffy/thai-lotto-api#api for API usage',
   })
 })
 

@@ -3,7 +3,8 @@
   "name": "thai-lotto",
   "builds": [{
     "src": "/src/index.ts",
-    "use": "@now/node-server"
+    "use": "@now/node-server",
+    "config": { "maxLambdaSize": "50mb" }
   }],
   "routes": [{
       "headers": {
