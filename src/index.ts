@@ -44,7 +44,7 @@ server.get('/list/:page?', async (req, res) => {
 
   const $ = cheerio.load(lotto.data)
 
-  let pastLottos = []
+  let pastLottos: {id: string, url: string, date?: string}[] = []
 
   // List id
   $('body > div.wrapper > div > div.box-cell.box-cell--lotto.content > div > div > div > article.archive--lotto > div > div > a').each((i, elem) => {
@@ -80,13 +80,10 @@ server.get('/lotto/:id', async (req, res) => {
 })
 
 server.get('*', (req, res) => {
-  res.send(
-    {
-      status: 'failure',
-      response: 'route not found',
-    },
-    404,
-  )
+  res.status(404).send({
+    status: 'failure',
+    response: 'route not found',
+  })
 })
 
 export default server
