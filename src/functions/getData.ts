@@ -37,7 +37,7 @@ export const getDataFunction = async (url: string) => {
 
   let prizeThrid: string[] = []
   $(
-    '#contentPrint > div.lottocheck__resize > div:nth-child(3) > div:nth-child(2) > span.lotto__number',
+    '#contentPrint > div.lottocheck__resize > div:nth-child(3) > div > span',
   ).each((i, elem) => {
     prizeThrid.push($(elem).text())
   })
