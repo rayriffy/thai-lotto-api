@@ -14,63 +14,63 @@ export const getDataFunction = async (url: string) => {
         .indexOf(' ') + 1,
     )
 
-  let prizeFirst = []
+  let prizeFirst: string[] = []
   $(
     '#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--bdnone > div.lottocheck__table > div:nth-child(1) > strong.lotto__number',
   ).each((i, elem) => {
     prizeFirst.push($(elem).text())
   })
 
-  let prizeFirstNear = []
+  let prizeFirstNear: string[] = []
   $(
     '#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--bdnone > div.lottocheck__sec--nearby > strong.lotto__number',
   ).each((i, elem) => {
     prizeFirstNear.push($(elem).text())
   })
 
-  let prizeSecond = []
+  let prizeSecond: string[] = []
   $(
     '#contentPrint > div.lottocheck__resize > div:nth-child(2) > div > span.lotto__number',
   ).each((i, elem) => {
     prizeSecond.push($(elem).text())
   })
 
-  let prizeThrid = []
+  let prizeThrid: string[] = []
   $(
     '#contentPrint > div.lottocheck__resize > div:nth-child(3) > div:nth-child(2) > span.lotto__number',
   ).each((i, elem) => {
     prizeThrid.push($(elem).text())
   })
 
-  let prizeForth = []
+  let prizeForth: string[] = []
   $(
     '#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--font-mini.lottocheck__sec--bdnoneads > div.lottocheck__box-item > span.lotto__number',
   ).each((i, elem) => {
     prizeForth.push($(elem).text())
   })
 
-  let prizeFifth = []
+  let prizeFifth: string[] = []
   $(
     '#contentPrint > div.lottocheck__resize > div:nth-child(6) > div.lottocheck__box-item > span.lotto__number',
   ).each((i, elem) => {
     prizeFifth.push($(elem).text())
   })
 
-  let runningNumberFrontThree = []
+  let runningNumberFrontThree: string[] = []
   $(
     '#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--bdnone > div.lottocheck__table > div:nth-child(2) > strong.lotto__number',
   ).each((i, elem) => {
     runningNumberFrontThree.push($(elem).text())
   })
 
-  let runningNumberBackThree = []
+  let runningNumberBackThree: string[] = []
   $(
     '#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--bdnone > div.lottocheck__table > div:nth-child(3) > strong.lotto__number',
   ).each((i, elem) => {
     runningNumberBackThree.push($(elem).text())
   })
 
-  let runningNumberBackTwo = []
+  let runningNumberBackTwo: string[] = []
   $(
     '#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--bdnone > div.lottocheck__table > div:nth-child(4) > strong.lotto__number',
   ).each((i, elem) => {
