@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "name": "thai-lotto",
+  "builds": [{
+    "src": "./src/index.ts",
+    "use": "@now/node-server"
+  }],
+  "routes": [{
+      "headers": {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET",
+          "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept",
+          "x-now-cache": "HIT",
+          "cache-control": "s-maxage=604800, max-age=604800",
+          "Accept-Encoding": "br"
+      },
+      "src": "/.*",
+      "dest": "./src/index.ts"
+  }],
+  "regions": ["all"]
+}
