@@ -8,6 +8,5 @@
   "routes": [{
     "src": "/(.*)",
     "dest": "/src/index.ts"
-  }],
-  "regions": ["all"]
+  }]
 }

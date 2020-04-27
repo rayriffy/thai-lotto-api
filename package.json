@@ -1,6 +1,6 @@
 {
   "name": "thai-lotto-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "repository": "git@github.com:rayriffy/thai-lotto-api.git",
   "author": "Phumrapee Limpianchop <contact@rayriffy.com>",
