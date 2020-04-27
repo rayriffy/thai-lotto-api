@@ -35,11 +35,11 @@ export const getDataFunction = async (url: string) => {
     prizeSecond.push($(elem).text())
   })
 
-  let prizeThrid: string[] = []
+  let prizeThird: string[] = []
   $(
     '#contentPrint > div.lottocheck__resize > div:nth-child(3) > div > span',
   ).each((i, elem) => {
-    prizeThrid.push($(elem).text())
+    prizeThird.push($(elem).text())
   })
 
   let prizeForth: string[] = []
@@ -105,11 +105,11 @@ export const getDataFunction = async (url: string) => {
           number: prizeSecond,
         },
         {
-          id: 'prizeThrid',
+          id: 'prizeThird',
           name: 'รางวัลที่ 3',
           reward: '80000',
-          amount: prizeThrid.length,
-          number: prizeThrid,
+          amount: prizeThird.length,
+          number: prizeThird,
         },
         {
           id: 'prizeForth',
