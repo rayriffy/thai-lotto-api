@@ -38,9 +38,9 @@ server.get('/latest', async (req, res) => {
     const data =
       $('#lotto-highlight-result > p.lotto__wait').text() === 'รอผลสลากกินแบ่งรัฐบาล' ?
       await getDataFunction(
-        $('body > div.section.section--lotto-check > div > div > div > div.col.span-8 > section > div.section__body > div > article:nth-child(1) > h3.lotto-check__title > a',).attr('href')
+        $('body > div.section.section--lotto-check > div > div > div > div.col.span-8 > section > div.section__body > div > article:nth-child(1) > h3.lotto-check__title > a',).attr('href') || ''
       ) : await getDataFunction(
-        $('body > div.section.section--highlight.highlight-horo > div > div > div > div.lotto-highlight > div > div.lotto-check__btn-group.flex-box > div > a',).attr('href')
+        $('body > div.section.section--highlight.highlight-horo > div > div > div > div.lotto-highlight > div > div.lotto-check__btn-group.flex-box > div > a',).attr('href') || ''
       )
   
     return res.status(200).send(data)
@@ -66,10 +66,10 @@ server.get('/list/:page?', async (req, res) => {
 
     // List id
     $('body > div.wrapper > div > div.box-cell.box-cell--lotto.content > div > div > div > article.archive--lotto > div > div > a').each((i, elem) => {
-      const id = $(elem).attr('href').split('/')[5]
+      const id = $(elem).attr('href')?.split('/')[5]
 
       pastLottos.push({
-        id: id,
+        id: id || '',
         url: `/lotto/${id}`
       })
     })
