@@ -6,10 +6,10 @@ export const getDataFunction = async (url: string) => {
 
   const $ = cheerio.load(lotto.data)
 
-  let date = $('#contentPrint > h2')
+  let date = $('#contentPrint > header > h2')
     .text()
     .substr(
-      $('#contentPrint > h2')
+      $('#contentPrint > header > h2')
         .text()
         .indexOf(' ') + 1,
     )
