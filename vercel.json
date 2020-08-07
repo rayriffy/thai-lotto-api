@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "name": "thai-lotto",
   "builds": [{
     "src": "/src/index.ts",
     "use": "@now/node"
