@@ -29,6 +29,13 @@ server.get('/', async (req, res) => {
   }
 })
 
+server.get('/ping', (req, res) => {
+  return res.status(200).send({
+    status: 'success',
+    response: 'pong',
+  })
+})
+
 server.get('/latest', async (req, res) => {
   try {
     const lotto = await axios.get(`https://news.sanook.com/lotto/`)
