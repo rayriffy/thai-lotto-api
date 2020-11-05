@@ -375,7 +375,7 @@ The API is based on HTTPS requests and JSON responses. The stable HTTPS endpoint
 ### Get past lottery result
 
 ##### request
-`GET /lottery/[:id]`
+`GET /lotto/[:id]`
 
 `[:id]` can be obtain from `/list`
 
