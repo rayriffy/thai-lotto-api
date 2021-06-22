@@ -3,6 +3,8 @@ import { getPuppeteerBrowser } from "./getPuppeteerBrowser"
 export const getLotto = async (targetId: string | number) => {
   const url = `https://news.sanook.com/lotto/check/${targetId}`
 
+  console.log(url)
+
   const browser = await getPuppeteerBrowser()
 
   const page = await browser.newPage()

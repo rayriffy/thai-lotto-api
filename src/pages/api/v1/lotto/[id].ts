@@ -19,9 +19,7 @@ const api: NextApiHandler = async (req, res) => {
         response: 'invalid positive integer'
       })
     } else {
-      const targetId = Number(id)
-
-      const lotto = await getLotto(targetId)
+      const lotto = await getLotto(id as string)
 
       const lottoeryDate = dayjs(lotto.date, 'D MMMM YYYY', 'th')
 
