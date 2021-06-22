@@ -1,16 +1,8 @@
 {
-  "builds": [
-    { "src": "package.json", "use": "@vercel/next" }
-  ],
   "functions": {
-    "api/v1/latest": {
-      "memory": 3008
-    },
-    "api/v1/list/[page]": {
-      "memory": 3008
-    },
-    "api/v1/lotto/[id]": {
-      "memory": 3008
+    "src/pages/api/**/*.ts": {
+      "memory": 3008,
+      "maxDuration": 60
     }
   }
 }
