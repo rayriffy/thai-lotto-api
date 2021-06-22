@@ -25,6 +25,7 @@ const api: NextApiHandler = async (req, res) => {
       })
     }
   } catch (e) {
+    console.error(e)
     return res.status(400).send({
       status: 'crash',
       response: 'api cannot fulfill your request at this time'
