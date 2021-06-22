@@ -19,6 +19,10 @@ module.exports = {
         destination: `/api/v1/lotto/:path*`,
       },
       {
+        source: '/list',
+        destination: `/api/v1/list/1`,
+      },
+      {
         source: '/list/:path*',
         destination: `/api/v1/list/:path*`,
       },
