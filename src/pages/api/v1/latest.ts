@@ -8,6 +8,7 @@ const api: NextApiHandler = async (_req, res) => {
 
     const fetchedLotto = await fetch(`https://lotto.api.rayriffy.com/api/v1/lotto/${latestLotteryId}`).then(o => o.json())
 
+    res.setHeader('Cache-Control', 's-maxage=300')
     res.setHeader('Access-Control-Allow-Origin', '*')
 
     return res.send(fetchedLotto)
