@@ -31,6 +31,8 @@ const api: NextApiHandler = async (req, res) => {
         res.setHeader('Cache-Control', 's-maxage=3600')
       }
 
+      res.setHeader('Access-Control-Allow-Origin', '*')
+
       return res.send({
         status: 'success',
         response: lotto,

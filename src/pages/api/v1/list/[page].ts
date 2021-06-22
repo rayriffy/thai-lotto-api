@@ -17,6 +17,7 @@ const api: NextApiHandler = async (req, res) => {
       const lists = await getList(targetPage)
 
       res.setHeader('Cache-Control', 's-maxage=7200')
+      res.setHeader('Access-Control-Allow-Origin', '*')
 
       return res.send({
         status: 'success',
