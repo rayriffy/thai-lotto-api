@@ -36,7 +36,7 @@ export const getLotto = async (targetId: string | number) => {
     scrapeText('#contentPrint > div.lottocheck__resize > div:nth-child(2) > div > span.lotto__number'),
     scrapeText('#contentPrint > div.lottocheck__resize > div:nth-child(3) > div > span'),
     scrapeText('#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--font-mini.lottocheck__sec--bdnoneads > div.lottocheck__box-item > span.lotto__number'),
-    scrapeText('#contentPrint > div.lottocheck__resize > div:nth-child(6) > div.lottocheck__box-item > span.lotto__number'),
+    scrapeText('#contentPrint > div.lottocheck__resize > div:nth-child(7) > div.lottocheck__box-item > span.lotto__number'),
     scrapeText('#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--bdnone > div.lottocheck__table > div:nth-child(2) > strong.lotto__number'),
     scrapeText('#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--bdnone > div.lottocheck__table > div:nth-child(3) > strong.lotto__number'),
     scrapeText('#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--bdnone > div.lottocheck__table > div:nth-child(4) > strong.lotto__number'),
