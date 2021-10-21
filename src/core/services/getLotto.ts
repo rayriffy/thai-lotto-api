@@ -26,20 +26,20 @@ export const getLotto = async (targetId: string | number) => {
     runningNumberBackThree,
     runningNumberBackTwo,
   ] = await Promise.all([
-    page.$eval('#contentPrint > header > h2', element => {
+    page.$eval('#contentPrint > header > h2', element => { // date
       console.log()
       const rawText = element.textContent
       return rawText.substr(rawText.indexOf(' ') + 1)
     }),
-    scrapeText('#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--bdnone > div.lottocheck__table > div:nth-child(1) > strong.lotto__number'),
-    scrapeText('#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--bdnone > div.lottocheck__sec--nearby > strong.lotto__number'),
-    scrapeText('#contentPrint > div.lottocheck__resize > div:nth-child(2) > div > span.lotto__number'),
-    scrapeText('#contentPrint > div.lottocheck__resize > div:nth-child(3) > div > span'),
-    scrapeText('#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--font-mini.lottocheck__sec--bdnoneads > div.lottocheck__box-item > span.lotto__number'),
-    scrapeText('#contentPrint > div.lottocheck__resize > div:nth-child(6) > div.lottocheck__box-item > span.lotto__number'),
-    scrapeText('#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--bdnone > div.lottocheck__table > div:nth-child(2) > strong.lotto__number'),
-    scrapeText('#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--bdnone > div.lottocheck__table > div:nth-child(3) > strong.lotto__number'),
-    scrapeText('#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--bdnone > div.lottocheck__table > div:nth-child(4) > strong.lotto__number'),
+    scrapeText('#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--bdnone > div.lottocheck__table > div:nth-child(1) > strong.lotto__number'), // prizeFirst
+    scrapeText('#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--bdnone > div.lottocheck__sec--nearby > strong.lotto__number'), // prizeFirstNear
+    scrapeText('#contentPrint > div.lottocheck__resize > div:nth-child(2) > div > span.lotto__number'), // prizeSecond
+    scrapeText('#contentPrint > div.lottocheck__resize > div:nth-child(3) > div > span'), // prizeThird
+    scrapeText('#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--font-mini.lottocheck__sec--bdnoneads > div.lottocheck__box-item > span.lotto__number'), // prizeForth
+    scrapeText('#contentPrint > div.lottocheck__resize > div:nth-child(7) > div > span.lotto__number'), // prizeFifth
+    scrapeText('#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--bdnone > div.lottocheck__table > div:nth-child(2) > strong.lotto__number'), // runningNumberFrontThree
+    scrapeText('#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--bdnone > div.lottocheck__table > div:nth-child(3) > strong.lotto__number'), // runningNumberBackThree
+    scrapeText('#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--bdnone > div.lottocheck__table > div:nth-child(4) > strong.lotto__number'), // runningNumberBackTwo
   ])
 
   await page.close()
