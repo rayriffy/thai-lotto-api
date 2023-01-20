@@ -6,20 +6,22 @@ import { getLotto } from './functions/getLotto'
 
 const app = new Elysia()
   .use(cors())
-  .get('/', () => {
-    new Response(
-      JSON.stringify({
-        status: 'success',
-        response:
-          'Please go to https://github.com/rayriffy/thai-lotto-api#api for API usage',
-      }),
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    )
-  })
+  .get(
+    '/',
+    () =>
+      new Response(
+        JSON.stringify({
+          status: 'success',
+          response:
+            'Please go to https://github.com/rayriffy/thai-lotto-api#api for API usage',
+        }),
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      )
+  )
   .get(
     '/ping',
     () =>
