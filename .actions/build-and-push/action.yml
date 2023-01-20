@@ -1,0 +1,42 @@
+name: Initialize
+description: "Composite actions to setup Node environments, and pnpm with cache handling"
+
+inputs:
+  deploys_user:
+    description: Deploys.app service account
+    required: true
+  deploys_pass:
+    description: Deploys.app secrets
+    required: true
+  target_image:
+    description: Target image name
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Build Docker image
+      shell: bash
+      env:
+        BUILD_MODE: ${{ inputs.mode }}
+      run: docker build --build-arg BUILD_MODE -t built-image .
+
+    - name: Tag Docker image
+      shell: bash
+      run: docker tag built-image ${{ inputs.target_image }}
+
+    - name: Push Docker image
+      shell: bash
+      run: docker push ${{ inputs.target_image }}
+
+    - uses: deploys-app/deploys-action@v1
+      with:
+        project: thai-lotto-api
+        location: gke.cluster-rcf2
+        name: runtime
+        image: ${{ inputs.target_image }}
+        minReplicas: 1
+        maxReplicas: 4
+      env:
+        DEPLOYS_AUTH_USER: ${{ inputs.deploys_user }}
+        DEPLOYS_AUTH_PASS: ${{ inputs.deploys_pass }}

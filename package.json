@@ -1,27 +1,17 @@
 {
   "name": "thai-lotto-api",
-  "version": "3.0.0",
-  "main": "index.js",
-  "repository": "git@github.com:rayriffy/thai-lotto-api.git",
-  "author": "Phumrapee Limpianchop <git@rayriffy.com>",
-  "license": "MIT",
+  "version": "1.0.16",
   "scripts": {
-    "dev": "next"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "bun run --hot src/index.ts"
   },
   "dependencies": {
-    "chrome-aws-lambda": "^10.0.0",
-    "dayjs": "^1.10.5",
-    "next": "^11.0.0",
-    "puppeteer": "^10.0.0",
-    "puppeteer-core": "^10.0.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "@elysiajs/cors": "^0.1.0",
+    "cheerio": "^1.0.0-rc.12",
+    "elysia": "^0.1.2"
   },
   "devDependencies": {
-    "@types/node": "^15.12.4",
-    "@types/react": "^17.0.11",
-    "@types/react-dom": "^17.0.8",
-    "prettier": "^2.3.1",
-    "typescript": "^4.3.4"
-  }
+    "bun-types": "latest"
+  },
+  "module": "src/index.js"
 }
