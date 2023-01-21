@@ -8,21 +8,23 @@ An API for checking latest Thai Lottery
 Requirements
 ------------
 
-- Node LTS
+- [Bun](https://bun.sh)
 
-Installation
-------------
+Development
+-----------
 
 ```sh
-$ npm install
-$ npm run start
+$ bun i
+$ bun run dev
 ```
 
-or just use yarn
+Building for production
+---
+
+We packed application to production by using Docker images.
 
 ```sh
-$ yarn
-$ yarn start
+$ docker build -t runtime .
 ```
 
 Limitations
