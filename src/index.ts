@@ -152,12 +152,20 @@ const app = new Elysia()
     '/latest',
     async ({ set }) => {
       try {
-        const latestLottery = await getList(1).then(o => o[0])
-        const lotto = await getLotto(latestLottery.id)
+        const latestLottery = await getList(1)
+        const lotto = await getLotto(latestLottery[0].id)
 
-        return {
-          status: 'success',
-          response: lotto,
+        // if lotto result is incomplete, then get previous lottery result
+        if (lotto.prizes.some(prize => prize.number.some(num => num.toLowerCase().includes('x')))) {
+          return {
+            status: 'success',
+            response: await getLotto(latestLottery[1].id),
+          }
+        } else {
+          return {
+            status: 'success',
+            response: lotto,
+          }
         }
       } catch (e) {
         set.status = 500
