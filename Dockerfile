@@ -10,7 +10,7 @@ RUN curl https://bun.sh/install | bash
 COPY package.json .
 COPY bun.lockb .
 
-RUN /root/.bun/bin/bun install --production
+RUN /root/.bun/bin/bun install
 
 # ? -------------------------
 FROM gcr.io/distroless/base
