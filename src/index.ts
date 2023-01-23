@@ -12,6 +12,7 @@ const app = new Elysia()
     swagger({
       exclude: ['/', '/ping'],
       swagger: {
+        schemes: ['https'],
         info: {
           title: 'Thai Lotto API',
           description: 'API สำหรับแสดงเลขผลสลากกินแบ่ง',
