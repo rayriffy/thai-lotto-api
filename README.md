@@ -3,8 +3,6 @@ Thai Lottery API
 
 An API for checking latest Thai Lottery
 
-**IN DEVELOPMENT** Please don't expect shit to work perfectly as this is very much a work in progress
-
 Requirements
 ------------
 
