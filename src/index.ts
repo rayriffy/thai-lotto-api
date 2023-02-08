@@ -129,7 +129,7 @@ const app = new Elysia()
           tags: ['lotto'],
         },
         params: t.Object({
-          id: t.Number(),
+          id: t.String(),
         }),
         response: {
           200: 'lotto.detail',
@@ -137,9 +137,7 @@ const app = new Elysia()
         },
       },
       transform({ params, set }) {
-        params.id = +params.id
-
-        if (!Number.isSafeInteger(params.id)) {
+        if (!Number.isSafeInteger(Number(params.id))) {
           set.status = 400
           return {
             status: 'crash',
