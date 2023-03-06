@@ -155,7 +155,11 @@ const app = new Elysia()
         const lotto = await getLotto(latestLottery[0].id)
 
         // if lotto result is incomplete, then get previous lottery result
-        if (lotto.prizes.some(prize => prize.number.some(num => num.toLowerCase().includes('x')))) {
+        if (
+          lotto.prizes.some(prize =>
+            prize.number.some(num => num.toLowerCase().includes('x'))
+          )
+        ) {
           return {
             status: 'success',
             response: await getLotto(latestLottery[1].id),
