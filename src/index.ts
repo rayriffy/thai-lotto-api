@@ -1,6 +1,7 @@
 import { Elysia, t } from 'elysia'
 import { cors } from '@elysiajs/cors'
 import { swagger } from '@elysiajs/swagger'
+import { rateLimit } from 'elysia-rate-limit'
 
 import { getList } from './functions/getList'
 import { getLotto } from './functions/getLotto'
@@ -8,6 +9,12 @@ import { model } from './models'
 
 const app = new Elysia()
   .use(cors())
+  .use(
+    rateLimit({
+      duration: 60 * 60 * 1000, // 1 hour
+      max: 500, // 500 req per hour
+    })
+  )
   .use(
     swagger({
       exclude: ['/', '/ping'],
