@@ -1,14 +1,16 @@
 import { load } from 'cheerio'
+import type { CheerioAPI } from 'cheerio'
+
+const scrapeText = (cheerio: CheerioAPI) => (selector: string) =>
+  cheerio(selector)
+    .map((_, el) => cheerio(el).text())
+    .toArray()
 
 export const getLotto = async (targetId: string | number) => {
   const url = `https://news.sanook.com/lotto/check/${targetId}`
 
   const $ = load(await fetch(url).then(o => o.text()))
-
-  const scrapeText = (selector: string) =>
-    $(selector)
-      .map((_, el) => $(el).text())
-      .toArray()
+  const scraper = scrapeText($)
 
   const [
     date,
@@ -25,31 +27,31 @@ export const getLotto = async (targetId: string | number) => {
     $('#contentPrint > header > h2')
       .text()
       .substring($('#contentPrint > header > h2').text().indexOf(' ') + 1),
-    scrapeText(
+      scraper(
       '#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--bdnone > div.lottocheck__table > div:nth-child(1) > strong.lotto__number'
     ), // prizeFirst
-    scrapeText(
+    scraper(
       '#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--bdnone > div.lottocheck__sec--nearby > strong.lotto__number'
     ), // prizeFirstNear
-    scrapeText(
+    scraper(
       '#contentPrint > div.lottocheck__resize > div:nth-child(2) > div > span.lotto__number'
     ), // prizeSecond
-    scrapeText(
+    scraper(
       '#contentPrint > div.lottocheck__resize > div:nth-child(3) > div > span'
     ), // prizeThird
-    scrapeText(
+    scraper(
       '#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--font-mini.lottocheck__sec--bdnoneads > div.lottocheck__box-item > span.lotto__number'
     ), // prizeForth
-    scrapeText(
+    scraper(
       '#contentPrint > div.lottocheck__resize > div:nth-child(7) > div > span.lotto__number'
     ), // prizeFifth
-    scrapeText(
+    scraper(
       '#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--bdnone > div.lottocheck__table > div:nth-child(2) > strong.lotto__number'
     ), // runningNumberFrontThree
-    scrapeText(
+    scraper(
       '#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--bdnone > div.lottocheck__table > div:nth-child(3) > strong.lotto__number'
     ), // runningNumberBackThree
-    scrapeText(
+    scraper(
       '#contentPrint > div.lottocheck__resize > div.lottocheck__sec.lottocheck__sec--bdnone > div.lottocheck__table > div:nth-child(4) > strong.lotto__number'
     ), // runningNumberBackTwo
   ])
