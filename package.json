@@ -6,10 +6,10 @@
     "dev": "bun run --hot src/index.ts"
   },
   "dependencies": {
-    "@elysiajs/cors": "^0.3.0",
-    "@elysiajs/swagger": "^0.3.0",
+    "@elysiajs/cors": "^0.1.0",
+    "@elysiajs/swagger": "^0.2.0-rc.0",
     "cheerio": "^1.0.0-rc.12",
-    "elysia": "^0.4.9",
+    "elysia": "^0.2.0-rc.0",
     "elysia-rate-limit": "^1.0.3"
   },
   "devDependencies": {
