@@ -31,9 +31,9 @@ runs:
 
     - uses: deploys-app/deploys-action@v1
       with:
-        project: thai-lotto-api
+        project: rayriffy
         location: gke.cluster-rcf2
-        name: runtime
+        name: thai-lotto-api
         image: ${{ inputs.target_image }}
         minReplicas: 1
         maxReplicas: 4
