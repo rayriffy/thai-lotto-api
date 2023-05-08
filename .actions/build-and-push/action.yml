@@ -17,9 +17,7 @@ runs:
   steps:
     - name: Build Docker image
       shell: bash
-      env:
-        BUILD_MODE: ${{ inputs.mode }}
-      run: docker build --build-arg BUILD_MODE -t built-image .
+      run: docker build -t built-image .
 
     - name: Tag Docker image
       shell: bash
