@@ -13,7 +13,7 @@ COPY bun.lockb .
 RUN /root/.bun/bin/bun install
 
 # ? -------------------------
-FROM gcr.io/distroless/base
+FROM gcr.io/distroless/base-debian11
 
 WORKDIR /app
 
@@ -21,8 +21,6 @@ COPY --from=builder /root/.bun/bin/bun bun
 COPY --from=builder /app/node_modules node_modules
 
 COPY src src
-# COPY public public
-# COPY tsconfig.json .
 
 ENV ENV production
 ENV PORT 3000

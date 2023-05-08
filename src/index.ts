@@ -18,28 +18,28 @@ const app = new Elysia()
   .use(
     swagger({
       exclude: ['/', '/ping'],
-      swagger: {
-        schemes: ['https'],
-        info: {
-          title: 'Thai Lotto API',
-          description: 'API สำหรับแสดงเลขผลสลากกินแบ่ง',
-          version: '3.0.0',
-        },
-        externalDocs: {
-          description: 'GitHub',
-          url: 'https://github.com/rayriffy/thai-lotto-api#api',
-        },
-        tags: [
-          {
-            name: 'lotto',
-            description: 'Endpoint related to Lotto API',
-            externalDocs: {
-              description: 'API Documentation',
-              url: 'https://github.com/rayriffy/thai-lotto-api#api',
-            },
-          },
-        ],
-      },
+      // swagger: {
+      //   schemes: ['https'],
+      //   info: {
+      //     title: 'Thai Lotto API',
+      //     description: 'API สำหรับแสดงเลขผลสลากกินแบ่ง',
+      //     version: '3.0.0',
+      //   },
+      //   externalDocs: {
+      //     description: 'GitHub',
+      //     url: 'https://github.com/rayriffy/thai-lotto-api#api',
+      //   },
+      //   tags: [
+      //     {
+      //       name: 'lotto',
+      //       description: 'Endpoint related to Lotto API',
+      //       externalDocs: {
+      //         description: 'API Documentation',
+      //         url: 'https://github.com/rayriffy/thai-lotto-api#api',
+      //       },
+      //     },
+      //   ],
+      // },
     })
   )
   .setModel(model)
