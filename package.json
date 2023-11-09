@@ -1,19 +1,19 @@
 {
   "name": "thai-lotto-api",
   "version": "1.0.16",
+  "module": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "bun run --hot src/index.ts"
   },
   "dependencies": {
-    "@elysiajs/cors": "^0.3.0",
-    "@elysiajs/swagger": "^0.4.0",
-    "cheerio": "^1.0.0-rc.12",
-    "elysia": "^0.4.15",
-    "elysia-rate-limit": "^1.0.3"
+    "@elysiajs/cors": "0.7.1",
+    "@elysiajs/swagger": "0.7.4",
+    "cheerio": "1.0.0-rc.12",
+    "elysia": "0.7.24",
+    "elysia-rate-limit": "1.2.0"
   },
   "devDependencies": {
-    "bun-types": "latest"
-  },
-  "module": "src/index.js"
+    "bun-types": "1.0.7"
+  }
 }

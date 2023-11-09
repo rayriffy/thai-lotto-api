@@ -42,7 +42,7 @@ const app = new Elysia()
       // },
     })
   )
-  .setModel(model)
+  .model(model)
   .get('/', ({ set }) => (set.redirect = '/swagger'))
   .get('/ping', () => ({
     status: 'success',
@@ -67,7 +67,7 @@ const app = new Elysia()
       }
     },
     {
-      transform({ params, set }) {
+      beforeHandle({ params, set }) {
         params.page = +params.page
 
         if (!Number.isSafeInteger(params.page)) {
@@ -78,17 +78,17 @@ const app = new Elysia()
           }
         }
       },
+      params: t.Object({
+        page: t.Number(),
+      }),
+      response: {
+        200: 'lotto.overview',
+        400: 'api.error',
+      },
       schema: {
         detail: {
           summary: 'Get lotto by page',
           tags: ['lotto'],
-        },
-        params: t.Object({
-          page: t.Number(),
-        }),
-        response: {
-          200: 'lotto.overview',
-          400: 'api.error',
         },
       },
     }
@@ -130,20 +130,7 @@ const app = new Elysia()
       }
     },
     {
-      schema: {
-        detail: {
-          summary: 'Check lottery status by lottery number',
-          tags: ['lotto'],
-        },
-        params: t.Object({
-          id: t.String(),
-        }),
-        response: {
-          200: 'lotto.detail',
-          400: 'api.error',
-        },
-      },
-      transform({ params, set }) {
+      beforeHandle({ params, set }) {
         if (!Number.isSafeInteger(Number(params.id))) {
           set.status = 400
           return {
@@ -151,6 +138,19 @@ const app = new Elysia()
             response: 'invalid positive integer',
           }
         }
+      },
+      params: t.Object({
+        id: t.String(),
+      }),
+      response: {
+        200: 'lotto.detail',
+        400: 'api.error',
+      },
+      schema: {
+        detail: {
+          summary: 'Check lottery status by lottery number',
+          tags: ['lotto'],
+        },
       },
     }
   )
@@ -186,14 +186,14 @@ const app = new Elysia()
       }
     },
     {
+      response: {
+        200: 'lotto.detail',
+        400: 'api.error',
+      },
       schema: {
         detail: {
           summary: 'Latest price annoucement',
           tags: ['lotto'],
-        },
-        response: {
-          200: 'lotto.detail',
-          400: 'api.error',
         },
       },
     }
