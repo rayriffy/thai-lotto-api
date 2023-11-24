@@ -13,6 +13,13 @@ const app = new Elysia()
     rateLimit({
       duration: 60 * 60 * 1000, // 1 hour
       max: 500, // 500 req per hour
+      generator: (req, server) => {
+        return (
+          req.headers.get('CF-Connecting-IP') ??
+          server?.requestIP(req)?.address ??
+          ''
+        )
+      },
     })
   )
   .use(
