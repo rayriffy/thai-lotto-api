@@ -7,13 +7,13 @@
     "dev": "bun run --hot src/index.ts"
   },
   "dependencies": {
-    "@elysiajs/cors": "0.7.1",
+    "@elysiajs/cors": "0.7.2",
     "@elysiajs/swagger": "0.7.4",
     "cheerio": "1.0.0-rc.12",
-    "elysia": "0.7.24",
-    "elysia-rate-limit": "1.2.0"
+    "elysia": "0.7.29",
+    "elysia-rate-limit": "1.3.0"
   },
   "devDependencies": {
-    "bun-types": "1.0.7"
+    "bun-types": "1.0.14"
   }
 }
