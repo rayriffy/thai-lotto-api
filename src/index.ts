@@ -55,6 +55,8 @@ const app = new Elysia()
       beforeHandle({ params, set }) {
         params.page = +params.page
 
+        console.log(params.page)
+
         if (!Number.isSafeInteger(params.page)) {
           set.status = 400
           return {
@@ -64,7 +66,7 @@ const app = new Elysia()
         }
       },
       params: t.Object({
-        page: t.Number(),
+        page: t.Numeric(),
       }),
       response: {
         200: 'lotto.overview',
