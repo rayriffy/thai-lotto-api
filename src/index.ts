@@ -2,6 +2,7 @@ import { Elysia, t } from 'elysia'
 import { cors } from '@elysiajs/cors'
 import { swagger } from '@elysiajs/swagger'
 import { rateLimit } from 'elysia-rate-limit'
+import { logger } from '@bogeychan/elysia-logger'
 
 import { getList } from './functions/getList'
 import { getLotto } from './functions/getLotto'
@@ -27,6 +28,7 @@ const app = new Elysia()
       exclude: ['/', '/ping'],
     })
   )
+  .use(logger())
   .model(model)
   .get('/', ({ set }) => (set.redirect = '/swagger'))
   .get('/ping', () => ({

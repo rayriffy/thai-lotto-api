@@ -7,6 +7,7 @@
     "dev": "bun run --hot src/index.ts"
   },
   "dependencies": {
+    "@bogeychan/elysia-logger": "^0.0.17",
     "@elysiajs/cors": "0.8.0",
     "@elysiajs/swagger": "0.8.5",
     "cheerio": "1.0.0-rc.12",
