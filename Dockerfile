@@ -1,4 +1,4 @@
-FROM debian:11.6-slim as builder
+FROM debian:12-slim as builder
 
 WORKDIR /app
 
@@ -14,7 +14,7 @@ RUN /root/.bun/bin/bun install
 
 # ? -------------------------
 
-FROM gcr.io/distroless/base-debian11
+FROM gcr.io/distroless/base-debian12
 
 WORKDIR /app
 
