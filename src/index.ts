@@ -55,8 +55,6 @@ const app = new Elysia()
       beforeHandle({ params, set }) {
         params.page = +params.page
 
-        console.log(params.page)
-
         if (!Number.isSafeInteger(params.page)) {
           set.status = 400
           return {
