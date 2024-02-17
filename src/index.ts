@@ -10,7 +10,7 @@ import { model } from './models'
 
 const app = new Elysia()
   .use(cors())
-  .use(
+  /** .use(
     rateLimit({
       duration: 60 * 60 * 1000, // 1 hour
       max: 500, // 500 req per hour
@@ -22,7 +22,7 @@ const app = new Elysia()
         )
       },
     })
-  )
+  ) */
   .use(
     swagger({
       exclude: ['/', '/ping'],
