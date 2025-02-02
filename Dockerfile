@@ -1,30 +1,33 @@
-FROM debian:12-slim as builder
+FROM oven/bun:1.2.2-debian AS builder
 
 WORKDIR /app
-
-RUN apt update
-RUN apt install curl unzip -y
-
-RUN curl https://bun.sh/install | bash
 
 COPY package.json .
 COPY bun.lockb .
 
-RUN /root/.bun/bin/bun install
+RUN bun install
+
+COPY ./src ./src
+
+ENV NODE_ENV=production
+RUN bun build \
+	--compile \
+	--minify-whitespace \
+	--minify-syntax \
+	--target bun \
+	--outfile server \
+	./src/index.ts
 
 # ? -------------------------
 
-FROM gcr.io/distroless/base-debian12
+FROM debian:12-slim AS runner
 
 WORKDIR /app
+COPY --from=builder /app/server server
 
-COPY --from=builder /root/.bun/bin/bun bun
-COPY --from=builder /app/node_modules node_modules
-
-COPY src src
-
-ENV ENV production
-ENV PORT 3000
-CMD ["./bun", "src/index.ts"]
-
+ENV TZ=Asia/Bangkok
+ENV NODE_ENV=production
+ENV PORT=3000
 EXPOSE 3000
+
+CMD ["./server"]

@@ -7,12 +7,11 @@
     "dev": "bun run --hot src/index.ts"
   },
   "dependencies": {
-    "@bogeychan/elysia-logger": "0.0.22",
-    "@elysiajs/cors": "1.0.2",
-    "@elysiajs/swagger": "1.0.5",
-    "cheerio": "1.0.0-rc.12",
-    "elysia": "1.0.24",
-    "elysia-rate-limit": "3.2.2"
+    "@bogeychan/elysia-logger": "0.1.8",
+    "@elysiajs/cors": "1.2.0",
+    "@elysiajs/swagger": "1.2.0",
+    "cheerio": "1.0.0",
+    "elysia": "1.2.11"
   },
   "devDependencies": {
     "bun-types": "1.1.13"

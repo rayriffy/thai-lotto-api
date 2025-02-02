@@ -1,7 +1,6 @@
 import { Elysia, t } from 'elysia'
 import { cors } from '@elysiajs/cors'
 import { swagger } from '@elysiajs/swagger'
-import { rateLimit } from 'elysia-rate-limit'
 import { logger } from '@bogeychan/elysia-logger'
 
 import { getList } from './functions/getList'
@@ -10,19 +9,6 @@ import { model } from './models'
 
 const app = new Elysia()
   .use(cors())
-  /** .use(
-    rateLimit({
-      duration: 60 * 60 * 1000, // 1 hour
-      max: 500, // 500 req per hour
-      generator: (req, server) => {
-        return (
-          req.headers.get('CF-Connecting-IP') ??
-          server?.requestIP(req)?.address ??
-          ''
-        )
-      },
-    })
-  ) */
   .use(
     swagger({
       exclude: ['/', '/ping'],
