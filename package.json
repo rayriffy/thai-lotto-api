@@ -11,9 +11,11 @@
     "@elysiajs/cors": "1.2.0",
     "@elysiajs/swagger": "1.2.0",
     "cheerio": "1.0.0",
-    "elysia": "1.2.11"
+    "elysia": "1.2.25",
+    "elysia-remote-dts": "1.0.0"
   },
   "devDependencies": {
-    "bun-types": "1.1.13"
+    "@types/bun": "1.2.11",
+    "typescript": "5.8.3"
   }
 }

@@ -2,6 +2,7 @@ import { Elysia, t } from 'elysia'
 import { cors } from '@elysiajs/cors'
 import { swagger } from '@elysiajs/swagger'
 import { logger } from '@bogeychan/elysia-logger'
+import { dts } from 'elysia-remote-dts'
 
 import { getList } from './functions/getList'
 import { getLotto } from './functions/getLotto'
@@ -9,6 +10,7 @@ import { model } from './models'
 
 const app = new Elysia()
   .use(cors())
+  .use(dts('./src/index.ts'))
   .use(
     swagger({
       exclude: ['/', '/ping'],
