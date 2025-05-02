@@ -1,34 +1,16 @@
-FROM oven/bun:1.2.5-debian AS builder
+FROM oven/bun:alpine
 
 WORKDIR /app
 
 COPY package.json .
-COPY bun.lockb .
+COPY bun.lock .
 
 RUN bun install
 
-COPY ./src ./src
+COPY src src
+COPY tsconfig.json .
 
-ENV NODE_ENV=production
-RUN bun build \
-	--compile \
-	--minify \
-	--sourcemap \
-	--bytecode \
-	--target bun \
-	--outfile server \
-	./src/index.ts
+ENV NODE_ENV production
+CMD ["bun", "src/index.ts"]
 
-# ? -------------------------
-
-FROM debian:12-slim AS runner
-
-WORKDIR /app
-COPY --from=builder /app/server server
-
-ENV TZ=Asia/Bangkok
-ENV NODE_ENV=production
-ENV PORT=3000
 EXPOSE 3000
-
-CMD ["./server"]
