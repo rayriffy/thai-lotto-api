@@ -3,6 +3,7 @@ import { cors } from '@elysiajs/cors'
 import { swagger } from '@elysiajs/swagger'
 import { logger } from '@bogeychan/elysia-logger'
 import { dts } from 'elysia-remote-dts'
+import { rateLimit } from 'elysia-rate-limit'
 
 import { getList } from './functions/getList'
 import { getLotto } from './functions/getLotto'
@@ -10,6 +11,19 @@ import { model } from './models'
 
 const app = new Elysia()
   .use(cors())
+  .use(
+    rateLimit({
+      duration: 60 * 60 * 1000, // 1 hour
+      max: 500, // 500 req per hour
+      generator: (req, server) => {
+        return (
+          req.headers.get('CF-Connecting-IP') ??
+          server?.requestIP(req)?.address ??
+          ''
+        )
+      },
+    })
+  )
   .use(dts('./src/index.ts'))
   .use(
     swagger({
